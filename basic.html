@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TechSpace Programming Institute</title>
+<style>
+    /* ====== Reset & Base ====== */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    html, body {
+        height: 100%;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #ecf0f1;
+        color: #2c3e50;
+    }
+
+    /* ====== Page Layout ====== */
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+    main {
+        flex: 1; /* Expand main to max available space */
+        max-width: 1200px;
+        width: 100%;
+        margin: 20px auto;
+        padding: 0 20px;
+    }
+
+    /* ====== Header ====== */
+    header {
+        background-color: #2c3e50;
+        color: white;
+        text-align: center;
+        padding: 20px 20px;
+    }
+    header h1 {
+        font-size: 2rem;
+        margin-bottom: 5px;
+    }
+    header p {
+        font-size: 1rem;
+        font-weight: 300;
+    }
+
+    /* ====== Navigation ====== */
+    nav {
+        background-color: #34495e;
+    }
+    nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    nav li {
+        margin: 0;
+    }
+    nav li a {
+        display: block;
+        padding: 12px 20px;
+        text-decoration: none;
+        color: white;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+    nav li a:hover,
+    nav li a.active-link {
+        background-color: #1abc9c;
+        color: white;
+        border-radius: 5px;
+    }
+
+    /* ====== Tab Content ====== */
+    .tab-content {
+        display: none;
+        animation: fadeIn 0.5s;
+    }
+    .tab-content.active {
+        display: block;
+    }
+    h2 {
+        color: #1abc9c;
+        margin-bottom: 15px;
+    }
+    p {
+        font-size: 1rem;
+        margin-bottom: 15px;
+    }
+
+    /* ====== Team Section (Horizontal Scroll) ====== */
+    .team-container {
+        display: flex;
+        overflow-x: auto; /* horizontal scroll if needed */
+        gap: 20px;
+        padding-bottom: 10px;
+    }
+    .team-container::-webkit-scrollbar {
+        height: 8px;
+    }
+    .team-container::-webkit-scrollbar-thumb {
+        background-color: #1abc9c;
+        border-radius: 4px;
+    }
+    .team-card {
+        flex: 0 0 280px; /* fixed width, no shrinking */
+        background-color: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .team-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+    .team-card h3 {
+        color: #2c3e50;
+        margin-bottom: 5px;
+    }
+    .team-card h4 {
+        color: #1abc9c;
+        margin-bottom: 10px;
+        font-weight: 400;
+    }
+    .team-card p {
+        font-size: 0.95rem;
+        color: #555;
+        margin-bottom: 8px;
+    }
+
+    /* ====== Footer ====== */
+    footer {
+        background-color: #2c3e50;
+        color: white;
+        text-align: center;
+        padding: 15px;
+    }
+
+    /* ====== Animations ====== */
+    @keyframes fadeIn {
+        from {opacity: 0;}
+        to {opacity: 1;}
+    }
+
+    /* ====== Responsive ====== */
+    @media(max-width: 768px){
+        nav ul {
+            flex-direction: column;
+        }
+        nav li a {
+            text-align: center;
+        }
+        .team-card {
+            flex: 0 0 220px; /* smaller card on mobile */
+        }
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>TechSpace Programming Institute</h1>
+    <p>Coding for the Future of Business and Technology</p>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="#" onclick="showTab('team', this)">Team</a></li>
+        <li><a href="#" onclick="showTab('contact', this)">Contact Us</a></li>
+        <li><a href="#" onclick="showTab('careers', this)">Careers</a></li>
+        <li><a href="#" onclick="showTab('technologies', this)">Technologies</a></li>
+        <li><a href="#" onclick="showTab('journey', this)">Journey</a></li>
+        <li><a href="#" onclick="showTab('services', this)">Services</a></li>
+        <li><a href="#" onclick="showTab('blogs', this)">Blogs</a></li>
+        <li><a href="#" onclick="showTab('events', this)">Events</a></li>
+        <li><a href="#" onclick="showTab('works', this)">Works</a></li>
+        <li><a href="#" onclick="showTab('case-studies', this)">Case Studies</a></li>
+    </ul>
+</nav>
+
+<main>
+    <!-- Team Section -->
+    <div id="team" class="tab-content active">
+        <h2>Our Team</h2>
+        <div class="team-container">
+
+            <div class="team-card">
+                <h3>Omkar Jagdale</h3>
+                <h4>Founder & Technical Lead</h4>
+                <p><strong>Position:</strong> Founder & Technical Lead (Software Development / IT Training)</p>
+                <p><strong>Experience:</strong> 2+ years industry experience as Technical Lead and 6+ years teaching experience in programming and IT training.</p>
+            </div>
+
+            <div class="team-card">
+                <h3>Harsh Shinde</h3>
+                <h4>Operations & Program Manager</h4>
+                <p><strong>Role Summary:</strong> Manages day-to-day institute operations, LinkedIn and team tracking, student communication, certifications, and hackathon coordination; second-highest authority after the founder.</p>
+            </div>
+
+            <div class="team-card">
+                <h3>Sushant Sawant</h3>
+                <h4>Training & Career Development Mentor</h4>
+                <p><strong>Role Summary:</strong> Manages assignments, weekly coding practice, and supports students’ personality development and professional skills.</p>
+            </div>
+
+            <div class="team-card">
+                <h3>Aditya Jagtap</h3>
+                <h4>Training & Coding Practice Mentor</h4>
+                <p><strong>Role Summary:</strong> Handles coding assignments, weekly code practice sessions, and helps students build discipline and confidence in coding.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Other Sections -->
+    <div id="contact" class="tab-content">
+        <h2>Contact Us</h2>
+        <p>Email: info@techspace.com | Phone: +1234567890</p>
+    </div>
+    <div id="careers" class="tab-content">
+        <h2>Careers</h2>
+        <p>Explore opportunities to grow and work with our team.</p>
+    </div>
+    <div id="technologies" class="tab-content">
+        <h2>Technologies</h2>
+        <p>Learn Python, JavaScript, HTML, CSS, AI, and more cutting-edge technologies.</p>
+    </div>
+    <div id="journey" class="tab-content">
+        <h2>Journey</h2>
+        <p>Discover the journey of TechSpace from inception to becoming a leading programming institute.</p>
+    </div>
+    <div id="services" class="tab-content">
+        <h2>Services</h2>
+        <p>We provide training, workshops, mentorship, and placement assistance.</p>
+    </div>
+    <div id="blogs" class="tab-content">
+        <h2>Blogs</h2>
+        <p>Read articles, tutorials, and insights from our instructors.</p>
+    </div>
+    <div id="events" class="tab-content">
+        <h2>Events</h2>
+        <p>Join our webinars, hackathons, and live coding events.</p>
+    </div>
+    <div id="works" class="tab-content">
+        <h2>Works</h2>
+        <p>Check out our completed projects and student work portfolios.</p>
+    </div>
+    <div id="case-studies" class="tab-content">
+        <h2>Case Studies</h2>
+        <p>Detailed case studies from real-world programming and tech projects.</p>
+    </div>
+</main>
+
+<footer>
+    &copy; 2025 TechSpace Programming Institute. All rights reserved.
+</footer>
+
+<script>
+function showTab(tabId, element){
+    const tabs = document.querySelectorAll('.tab-content');
+    tabs.forEach(tab => tab.classList.remove('active'));
+
+    document.getElementById(tabId).classList.add('active');
+
+    // Highlight active link
+    const links = document.querySelectorAll('nav li a');
+    links.forEach(link => link.classList.remove('active-link'));
+    element.classList.add('active-link');
+}
+</script>
+
+</body>
+</html>
